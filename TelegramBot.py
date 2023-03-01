@@ -21,7 +21,6 @@ def help_command(message):
 Если вы хотите написать более формальное и академическое эссе, вы можете уменьшить значение temperature (например, до 0.3 или 0.4).
 """)
 
-# Declare a global variable for temperature
 temp = 0.7
 # Define a command handler to change the temperature
 @bot.message_handler(commands=['temp'])
@@ -29,12 +28,9 @@ def change_temp(message):
   try:
     # Get the new temperature value from the message text
     new_temp = message.text.split()[1]
-    # Check if the new value is valid (between 0 and 1)
     if 0 <= float(new_temp) <= 1:
-      # Update the global variable with the new value
       global temp
       temp = float(new_temp)
-      # Send a confirmation message to the user
       bot.send_message(message.chat.id, f"Temperature changed to {temp}")
     else:
       # Send an error message to the user
