@@ -1,7 +1,8 @@
 import settings
-#import os
+import csv
 import openai
 import telebot
+import re
 
 
 openai.api_key= settings.OPENAI_API_KEY
@@ -22,11 +23,13 @@ def handle_message(message):
 )
   bot.send_message(chat_id=message.from_user.id,text=response['choices'][0]['text'])
 
-  with open('messages.txt','a') as file:
-    file.write('user: '+message.text+'\n')
-    file.write('bot: '+response['choices'][0]['text']+'\n')
-    print('user: '+message.text+'\n')
-    print('bot: '+response['choices'][0]['text']+'\n')
+
+  with open("private/messages.csv", "a") as file:
+    Response = re.sub(r"\n+", "", response['choices'][0]['text'])
+    writer = csv.writer(file)
+    writer.writerow([message.text, Response])
+    print(message.from_user.first_name + ': ' + message.text + '\n')
+    print('TeleBotAI: '+Response+'\n')
     file.close()
 
 bot.polling()
