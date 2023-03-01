@@ -7,7 +7,11 @@ import re
 openai.api_key= settings.OPENAI_API_KEY
 bot = telebot.TeleBot(settings.BOT_API_KEY)
   
-
+# Using /shutdown command
+@bot.message_handler(commands=['shutdown'])
+def shutdown(message):
+    if message.from_user.id == OWNER_ID: # only allow owner to use this command
+        exit()
 
 @bot.message_handler(commands=['help']) 
 def help_command(message): 
