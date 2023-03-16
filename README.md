@@ -1,11 +1,6 @@
-You need to add a folder "private" and add a file with name ".env"
+You need to add a folder "private" and add a file with name ".env". There you need to write your keys
 
-there you need to write your keys
-
-
-Вы должны создать папку "private" и добавить файл с именем ".env" в ней. 
-
-В этом файле необходимо указать ваши ключи.
+Вы должны создать папку "private" и добавить файл с именем ".env" в ней. В этом файле необходимо указать ваши ключи.
 
 OPENAI_API_KEY=sk-XXXXX
 
