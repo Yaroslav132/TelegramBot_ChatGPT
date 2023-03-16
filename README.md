@@ -8,6 +8,7 @@ there you need to write your keys
 В этом файле необходимо указать ваши ключи.
 
 OPENAI_API_KEY=sk-XXXXX
+
 BOT_API_KEY=1234567890:XXX
 
 # TelegramBot_ChatGPT
