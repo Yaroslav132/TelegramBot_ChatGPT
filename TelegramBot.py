@@ -65,8 +65,7 @@ def help(message):
     
 
 
-messages = [{"role": "system", "content": "You are a helpful assistant."},]
-
+messages = [{"role": "system", "content": "Ты - лучший ассистент."},]#Пиши в стиле поцана с района, используя слова-парразиты и ненормативную лексику (можно задать тон разговора для бота)
 @bot.message_handler(func=lambda _:True)
 def handle_message(message):
   if current_model == 'gpt3.5':
@@ -93,13 +92,15 @@ def handle_message(message):
     reply = response['choices'][0]['text']
     bot.send_message(chat_id=message.from_user.id,text=reply)
 
-  with open("private/messages.csv", "a") as file:
-    Response = re.sub(r"\n+", "", reply)
-    writer = csv.writer(file)
-    writer.writerow([message.text, Response])
-    print(message.from_user.first_name + ': ' + message.text + '\n')
-    print('TeleBotAI: '+Response+'\n')
-    file.close()
+
+  # Код для записи диалогов в файл. Может выдать ошибку при попытке записать спецсимволы или имодзи, поэтому отключил
+  # with open("private/messages.csv", "a") as file:
+  #   Response = re.sub(r"\n+", "", reply)
+  #   writer = csv.writer(file)
+  #   writer.writerow([message.text, Response])
+  #   print(message.from_user.first_name + ': ' + message.text + '\n')
+  #   print('TeleBotAI: '+Response+'\n')
+  #   file.close()
 
 
 
