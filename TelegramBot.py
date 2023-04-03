@@ -6,14 +6,6 @@ import re
 
 openai.api_key= settings.OPENAI_API_KEY
 bot = telebot.TeleBot(settings.BOT_API_KEY)
-  
-# Using /shutdown command
-@bot.message_handler(commands=['shutdown'])
-def shutdown(message):
-  OWNER_ID =922649944
-  if message.from_user.id == OWNER_ID: # only allow owner to use this command
-    exit()
-
 
 models = {
     'gpt3.5': 'gpt-3.5-turbo',
