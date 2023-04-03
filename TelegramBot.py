@@ -94,13 +94,16 @@ def handle_message(message):
 
 
   # Код для записи диалогов в файл. Может выдать ошибку при попытке записать спецсимволы или имодзи, поэтому отключил
-  # with open("private/messages.csv", "a") as file:
-  #   Response = re.sub(r"\n+", "", reply)
-  #   writer = csv.writer(file)
-  #   writer.writerow([message.text, Response])
-  #   print(message.from_user.first_name + ': ' + message.text + '\n')
-  #   print('TeleBotAI: '+Response+'\n')
-  #   file.close()
+  try:
+    with open("private/messages.csv", "a") as file:
+      Response = re.sub(r"\n+", "", reply)
+      writer = csv.writer(file)
+      writer.writerow([message.text, Response])
+      print(message.from_user.first_name + ': ' + message.text + '\n')
+      print('TeleBotAI: '+Response+'\n')
+      file.close()
+  except:
+    print("Произошла ошибка записи файла. Возможно были использованы спецсимволы")
 
 
 
